@@ -1,5 +1,6 @@
 import train_test as test
 import simples, mtrhead
+import report
 
 from time import perf_counter_ns
 
@@ -8,8 +9,8 @@ def exec_simple(data:list) -> list:
     start_simples = perf_counter_ns()
     primo_simples = simples.resolve_simple(data)
     finish_simples = perf_counter_ns()
-    speedup_simples = (finish_simples-start_simples)/1000000
-    return [primo_simples, speedup_simples]
+    exec_time = (finish_simples-start_simples)/1000000
+    return [primo_simples, exec_time]
 
 
 '''Retorna uma lista com os numeros primos e o tempo de execução do script com threads'''
@@ -17,8 +18,8 @@ def exec_mthred(data:list, threads:int) -> list:
     start_mthread = perf_counter_ns()
     primo_mthread = mtrhead.resolve_trhread(data, threads)
     finish_mthread = perf_counter_ns()
-    speedup_simples = (finish_mthread-start_mthread)/1000000
-    return [primo_mthread, speedup_simples]
+    exec_time = (finish_mthread-start_mthread)/1000000
+    return [primo_mthread, exec_time]
 
 
 '''Retorna uma lista com os numeros primos da base de dados'''
@@ -38,10 +39,10 @@ def run_tests(data:list):
 
 
 '''Retorna uma lista com as medias de cada cenario executado'''
-def run_median() -> list:
-    median_simple = test.median_time("relatorio_simples")
-    median_few_threads = test.median_time("relatorio_5_threads")
-    median_lot_threads = test.median_time("relatorio_500_threads")
+def run_median(reports:list) -> list:
+    median_simple = test.median_time(reports[0])
+    median_few_threads = test.median_time(reports[1])
+    median_lot_threads = test.median_time(reports[2])
     return [median_simple, median_few_threads, median_lot_threads]
 
 
@@ -49,23 +50,29 @@ def run_median() -> list:
 def run_speedup(medians:list) -> list:
     speedup_simple_few_threads = test.speedup(medians[0], medians[1])
     speedup_simple_lot_threads = test.speedup(medians[0], medians[2])
-    speedup_few_lot_threads = test.speedup(medians[1], medians[2])
-    return [speedup_simple_few_threads, speedup_simple_lot_threads, speedup_few_lot_threads]
+    return [speedup_simple_few_threads, speedup_simple_lot_threads]
 
 
 def main():
-    data = open_file("data.csv")
+    data = open_file("base_dados/data.csv")
+    reports = ["relatorio_simples","relatorio_5_threads","relatorio_500_threads"]
+    report.delete_report(reports)
+  
     run_tests(data)
-    medians = run_median()
+    medians = run_median(reports)
     speedup = run_speedup(medians)
     
-    print('Média calculada dos 50 cenários:')
+    print('Média do tempo de execução calculada dos 50 cenários:')
+    print('--------------------------------------------------------------')
     print(f'Tempo de execução simples: {medians[0]} ms')
     print(f'Tempo de execução com poucas threads: {medians[1]} ms')
-    print(f'Tempo de execução com muitas threads: {medians[2]} ms')
+    print(f'Tempo de execução com muitas threads: {medians[2]} ms\n')
+
+    print('Speedups calculado:')
+    print('--------------------------------------------------------------')
     print(f'Speedup compração simples e poucas threads: {speedup[0]}')
-    print(f'Speedup compração simples e muitas threads: {speedup[1]}')
-    print(f'Speedup compração poucas e muitas threads: {speedup[2]}')
+    print(f'Speedup compração simples e muitas threads: {speedup[1]}\n')
+
 
 
 if __name__ == "__main__":

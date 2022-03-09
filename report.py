@@ -1,4 +1,7 @@
+from genericpath import isfile
 from os.path import exists
+import os
+from re import I
 import pandas as pd
 
 
@@ -23,4 +26,11 @@ def save_report(df:pd.DataFrame, csv:str):
          df.to_csv(csv, index=False, header= ["Numeros primos encontrados","Tempo de execução"])
 
 
+'''Exclui os relatórios que já estão criados'''
+def delete_report(reports:list):
+    for i in range(len(reports)):
+        if exists(f'relatorios/{reports[i]}.csv'):
+            os.remove(f'relatorios/{reports[i]}.csv')
+        
 
+        
