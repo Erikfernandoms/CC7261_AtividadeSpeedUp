@@ -29,6 +29,7 @@ def open_file(csv) -> list:
     return data
 
 
+'''Roda os 50 cenarios de teste para cada cenario'''
 def run_tests(data:list):
     print('Calculando 50 cenários de teste...')
     test.exec_fifty_times(data, 'relatorio_simples')
@@ -36,6 +37,7 @@ def run_tests(data:list):
     test.exec_fifty_times(data, 'relatorio_500_threads', 500)
 
 
+'''Retorna uma lista com as medias de cada cenario executado'''
 def run_median() -> list:
     median_simple = test.median_time("relatorio_simples")
     median_few_threads = test.median_time("relatorio_5_threads")
@@ -43,6 +45,7 @@ def run_median() -> list:
     return [median_simple, median_few_threads, median_lot_threads]
 
 
+'''Retorna uma lista com os speedups de cada cenario executado'''
 def run_speedup(medians:list) -> list:
     speedup_simple_few_threads = test.speedup(medians[0], medians[1])
     speedup_simple_lot_threads = test.speedup(medians[0], medians[2])
