@@ -1,5 +1,5 @@
 import sympy
-import concurrent.futures
+import concurrent.futures as thread
 
 
 def tCalculaPrimo(data):
@@ -14,11 +14,11 @@ def resolve_trhread(data):
     tamanholista = len(data)
     index = range(0, tamanholista+(tamanholista//ThreadsQtdd), tamanholista//ThreadsQtdd)
     primos = 0
-    with concurrent.futures.ThreadPoolExecutor() as executor:
+    with thread.ThreadPoolExecutor() as executor:
         futures = []
         for i in range(ThreadsQtdd):
             futures.append(executor.submit(tCalculaPrimo, data=data[index[i]:index[i+1]]))
-        for future in concurrent.futures.as_completed(futures):
+        for future in thread.as_completed(futures):
             #futures.append(future.result())
             primos += future.result()
     return primos
