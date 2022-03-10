@@ -35,7 +35,7 @@ def run_tests(data:list):
     print('Calculando 50 cenários de teste...')
     test.exec_fifty_times(data, 'relatorio_simples')
     test.exec_fifty_times(data, 'relatorio_5_threads', 3)
-    test.exec_fifty_times(data, 'relatorio_500_threads', 150)
+    test.exec_fifty_times(data, 'relatorio_500_threads', 6)
 
 
 '''Retorna uma lista com as medias de cada cenario executado'''
