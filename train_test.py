@@ -26,6 +26,10 @@ def median_time(report:str) -> int:
 def speedup(time_exec1:int , time_exec2:int) -> int:
     return time_exec1/time_exec2
 
+
+'''Retorna o valor do percentual de perda dos valores passados'''
+def perc_variation(x:int, y:int) -> int:
+    return ((x-y)*100)/x
     
 
 
