@@ -70,4 +70,6 @@ A execução do código é bem simples, apenas execute o arquivo *main.py*
 Erik Fernando Mendes Silva RA:22.119.074-7
 Rafael Tocegui Compri      RA:22.119.063-0
 
+.
+
 
