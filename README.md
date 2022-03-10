@@ -54,7 +54,11 @@ O código funciona da seguinte forma:
  *R: Para que um sistema multi threads funcione, será necessário haver uma comunicação entre cada thread (troca de contexto) e isso consome tempo do processador e memória! Um sistema com MUITAS threads terão múltiplas trocas de contexto o que fará o processador gastar um tempo maior na comunicação das threads do que de fato na realização das operações!*
  
  ***4. Qual a fração serial do problema?***
- *R:*
+ *R: Para o primeiro cenário apresentado (execução com 3 threads), temos:* ![image](https://user-images.githubusercontent.com/70040215/157707933-67f051ae-80ef-40b5-85cb-d8497216f2dd.png)
+
+*Já para o segundo cenário (execução 150 threads), temos:*                                                 
+![image](https://user-images.githubusercontent.com/70040215/157708079-d6850af7-4711-4371-97da-6ddb338f6702.png)
+
  
  
 ## Execução do código
