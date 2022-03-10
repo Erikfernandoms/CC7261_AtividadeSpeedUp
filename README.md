@@ -1,6 +1,68 @@
 # CC7261_AtividadeSpeedUp
 
-Versão inicial, apenas para que os alunos entendam a estrutura do projeto.
+Código destinado para análise dos problemas apresentados em aula:
+ 1. Quanto mais threads, o SpeedUp melhora?
+ 
+ 2. Qual a melhor quebra para ser feita? (Quebra = qtdd de threads!)
 
-Issues conhecidos e que devem ser tratados ao longo do projeto:
- - qtdd de threads deve ser um divisor exato da quantidade de valores a serem avaliados
+ 3. Por que se aumentamos MUITO a quantidade de threads, perdemos o SpeedUp?
+ 
+ 4. Qual a fração serial do problema?
+
+
+## Primeiro vamos ao funcionamento do código
+
+Este código visa nos mostrar como é o funcionamento de uma execução de um sistema sem threads e com multi threads e para isso, analisaremos uma base com 250mil valores inteiros e contaremos a quantidade de numeros primos que encontramos nos valores da base de dados.
+
+O código funciona da seguinte forma:
+
+  1. Geração dos relatórios auxiliares
+     - Nesse momento, são executados 50 testes para cada cenário disposto no código! Para responder as perguntas propostas, utilizaremos os seguintes cenários: Execução simples (apenas a contagem de numeros primos sem threads), execução com multi threads utilizando poucas threads (nesse caso foram utilizados 3 threads) e execução com multi threads utilizando muitas threads (nesse caso foram utilizados 150 threads).
+     - Os 50 testes são salvos em relatórios auxiliares (.csv) contendo a quantidade de numeros primos encontrados mais o tempo de execução de cada teste.
+     
+![2022-03-10-12-13-40_Trim](https://user-images.githubusercontent.com/70040215/157693185-93de9bc8-1125-4aa4-8d94-fd3f55950c52.gif)
+
+
+  2. Análise dos relatorios auxiliares
+     - A etapa de análise consiste no cálculo da média do tempo de execução dos valores salvos na etapa anterior.
+     - Com essa média já podemos ter uma noção da diferença de cada cenário proposto, podendo assim calcular o speedup dos sistemas com multi thread e sem threads.
+     - Tendo os valores do speedup realizamos um cálculo para ver o percentual de perda entre os cenários apresentados.
+
+  3. Exibição dos resultados no relatório final
+     - Para o relatório final, é organizado e printado todos os valores encontrados anteriormente. Dispondo também, da criação de um gráfico que nos mostra a comparação entre os speedup's encontrados.
+
+
+![2022-03-10-12-14-59](https://user-images.githubusercontent.com/70040215/157693391-62001d7e-55f1-45ec-995d-3af6528f05e2.gif)
+
+
+# Relatório final + Respondendo as perguntas 
+
+## Relatório final
+
+ ![image](https://user-images.githubusercontent.com/70040215/157695545-7fd72aed-e8e3-433a-973e-03c6b94de253.png)
+ ![image](https://user-images.githubusercontent.com/70040215/157695594-be0bf088-38b0-46d5-8f81-26022d9d00d3.png)
+ 
+## Respondendo perguntas
+
+***1. Quanto mais threads, o SpeedUp melhora?***
+ *R: Não! Como podemos observar nos resultados mostrados anteriormente, foram testados os cenários com 3 threads e 150 threads! Podemos observar que com o aumento das threads o SpeedUp piorou.*
+ 
+ ***2. Qual a melhor quebra para ser feita? (Quebra = qtdd de threads!)***
+ *R: Para essa pergunta não temos uma resposta exata, tudo depende do sistema e das operações que serão realizadas! Mas olhando para o problema proposto, assumimos que de 2 thread até 6 threads temos um minúsculo ganho entre eles o que não chega a ser significativo, acima disso temos total perda do speedup. Mesmo tendo um ganho nada significativo, nenhum superou a execução sem threads.*
+
+ ***3. Por que se aumentamos MUITO a quantidade de threads, perdemos o SpeedUp?***
+ *R: Para que um sistema multi threads funcione, será necessário haver uma comunicação entre cada thread (troca de contexto) e isso consome tempo do processador e memória! Um sistema com MUITAS threads terão múltiplas trocas de contexto o que fará o processador gastar um tempo maior na comunicação das threads do que de fato na realização das operações!*
+ 
+ ***4. Qual a fração serial do problema?***
+ *R:*
+ 
+ 
+## Execução do código
+
+A execução do código é bem simples, apenas execute o arquivo *main.py*
+
+## Alunos envolvidos
+
+Erik Fernando Mendes Silva RA:22.119.074-7
+
+
