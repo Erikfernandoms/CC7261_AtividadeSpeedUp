@@ -17,9 +17,15 @@ def exec_fifty_times(data:list, report:str, threads:int=0):
 
 '''Retorna a media dos tempos de execução da base da dados'''
 def median_time(report:str) -> int:
-    df = pd.read_csv(f"relatorios/{report}.csv")
+    df = pd.read_csv(f"relatorios/{report}")
     time_exec = df['Tempo de execução']
     return median(time_exec)
+
+'''Retorna os tempos de execução'''
+def temp_exec(report:str) -> list:
+    df = pd.read_csv(f"relatorios/{report}")
+    time_exec = df['Tempo de execução']
+    return time_exec
 
 
 '''Retorna o speedup baseado nos tempos de execução passados'''

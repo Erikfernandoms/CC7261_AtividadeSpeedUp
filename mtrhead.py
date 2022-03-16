@@ -1,6 +1,15 @@
 import sympy
 import concurrent.futures as thread
 
+
+'''Gera as threads'''
+def gen_thread() -> list:
+    threads=[]
+    for i in range(1,151):
+        if i % 10 == 0:
+            threads.append(i)
+    return threads
+
 '''Retorna a quantidade de num. primos achados na base de dados passada com threads'''
 def tCalculaPrimo(data:list, primes:int=0) -> int:
     for i in range(len(data)):
