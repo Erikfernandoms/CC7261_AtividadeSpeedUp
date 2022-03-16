@@ -17,7 +17,7 @@ Este código visa nos mostrar como é o funcionamento de uma execução de um si
 O código funciona da seguinte forma:
 
   1. Geração dos relatórios auxiliares
-     - Nesse momento, são executados 50 testes para cada cenário disposto no código! Para responder as perguntas propostas, utilizaremos os seguintes cenários: Execução simples (apenas a contagem de numeros primos sem threads), execução com multi threads utilizando poucas threads (nesse caso foram utilizados 3 threads) e execução com multi threads utilizando muitas threads (nesse caso foram utilizados 150 threads).
+     - Nesse momento, são executados 50 testes para cada cenário disposto no código! Para responder as perguntas propostas, utilizaremos os seguintes cenários: Execução simples (apenas a contagem de numeros primos sem threads), execução com multi threads aumentando gradualmente de 10 em 10 threads até 150 threads.
      - Os 50 testes são salvos em relatórios auxiliares (.csv) contendo a quantidade de numeros primos encontrados mais o tempo de execução de cada teste.
      
 ![2022-03-10-12-13-40_Trim](https://user-images.githubusercontent.com/70040215/157693185-93de9bc8-1125-4aa4-8d94-fd3f55950c52.gif)
@@ -32,21 +32,19 @@ O código funciona da seguinte forma:
      - Para o relatório final, é organizado e printado todos os valores encontrados anteriormente. Dispondo também, da criação de um gráfico que nos mostra a comparação entre os speedup's encontrados.
 
 
-![2022-03-10-12-14-59](https://user-images.githubusercontent.com/70040215/157693391-62001d7e-55f1-45ec-995d-3af6528f05e2.gif)
-
 
 # Relatório final + Respondendo as perguntas 
 
 ## Relatório final
 
 
- ![unknow1n](https://user-images.githubusercontent.com/70040215/158077933-5871ec25-90de-430d-8643-a6a2978d9ab7.png)
- ![image](https://user-images.githubusercontent.com/70040215/157695594-be0bf088-38b0-46d5-8f81-26022d9d00d3.png)
+![image](https://user-images.githubusercontent.com/70040215/158587199-d0c05130-9c1b-45a5-ab46-5df9f28d96f9.png)
+![image](https://user-images.githubusercontent.com/70040215/158587181-64e24e58-1650-42d5-a105-9ddf42fe93f7.png)
  
 ## Respondendo perguntas
 
 ***1. Quanto mais threads, o SpeedUp melhora?***
- *R: Não! Como podemos observar nos resultados mostrados anteriormente, foram testados os cenários com 3 threads e 150 threads! Podemos observar que com o aumento das threads o SpeedUp piorou.*
+ *R: Não! Como podemos observar nos resultados mostrados anteriormente, foram testados 15 cenários com o aumento de 10 em 10 threads! Podemos observar que com o aumento das threads o SpeedUp piorou.*
  
  ***2. Qual a melhor quebra para ser feita? (Quebra = qtdd de threads!)***
  *R: Para essa pergunta não temos uma resposta exata, tudo depende do sistema e das operações que serão realizadas! Mas olhando para o problema proposto, assumimos que de 2 thread até 6 threads temos um minúsculo ganho entre eles o que não chega a ser significativo, acima disso temos total perda do speedup. Mesmo tendo um ganho nada significativo, nenhum superou a execução sem threads.*
@@ -55,7 +53,7 @@ O código funciona da seguinte forma:
  *R: Para que um sistema multi threads funcione, será necessário haver uma comunicação entre cada thread (troca de contexto) e isso consome tempo do processador e memória! Um sistema com MUITAS threads terão múltiplas trocas de contexto o que fará o processador gastar um tempo maior na comunicação das threads do que de fato na realização das operações!*
  
  ***4. Qual a fração serial do problema?***
- *R: Para o primeiro cenário apresentado (execução com 3 threads), temos:* ![image](https://user-images.githubusercontent.com/70040215/157707933-67f051ae-80ef-40b5-85cb-d8497216f2dd.png)
+ *R: Para o primeiro cenário apresentado (execução com 10 threads), temos:* ![image](https://user-images.githubusercontent.com/70040215/157707933-67f051ae-80ef-40b5-85cb-d8497216f2dd.png)
 
 *Já para o segundo cenário (execução 150 threads), temos:*                                                 
 ![image](https://user-images.githubusercontent.com/70040215/157708079-d6850af7-4711-4371-97da-6ddb338f6702.png)
